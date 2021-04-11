@@ -13,7 +13,7 @@ def plot(abscissa, set_up_times, match_times):
         find_cost = []
         for j in abscissa:
             find_cost.append(match_times[i][j])
-        find_times[abscissa] = find_cost
+        find_times[i] = find_cost
 
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1)
