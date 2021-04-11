@@ -13,7 +13,7 @@ if __name__ == '__main__':
     # load data
     dataload.load()
     # simulate
-    for route_basic_count in (90, 900, 9000, 90000, 900000):
+    for route_basic_count in abscissa:
         # generate
         [route_numbers, route_lengths] = dataload.get_with_random(route_basic_count)
         new_tree = tree.Tree(numbers=route_numbers, lengths=route_lengths)
@@ -21,7 +21,7 @@ if __name__ == '__main__':
         set_up_times[route_basic_count] = set_up_time
         # match
         match_cost = {}
-        for route_match_count in (90, 900, 9000, 90000, 900000):
+        for route_match_count in abscissa:
             match_time = new_tree.match_all(route_match_count)
             match_cost[route_match_count] = match_time
         match_times[route_basic_count] = match_cost
