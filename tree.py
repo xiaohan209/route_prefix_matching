@@ -16,7 +16,6 @@ class TreeNode:
         self.is_node = True
 
 
-
 class Tree:
     numbers = []
     lengths = []
@@ -24,7 +23,7 @@ class Tree:
 
     def __init__(self, numbers, lengths):
         self.numbers = numbers
-        self.netmask = lengths
+        self.lengths = lengths
         self.all_nodes = {}
 
     def generate(self):
@@ -33,7 +32,8 @@ class Tree:
             index = 1
             now_number = self.numbers[i]
             now_length = self.lengths[i]
-            for j in (0, now_length):
+
+            for j in range(0, now_length):
                 last_number = (now_number >> (31 - j)) & 1
                 index = (index << 2) | last_number
             now_mask = match.prefixlength2netmask(now_length)
@@ -47,9 +47,9 @@ class Tree:
         for i in range(0, route_count):
             which = random.randint(0, len(self.numbers) - 1)
             route = self.numbers[which]
-            [now_number,is_success] = self.match_single_route(route)
+            [now_number, is_success] = self.match_single_route(route)
         time_end = time.time()
-        return time_end-time_begin
+        return time_end - time_begin
 
     def match_single_route(self, route):
         index = 1
@@ -63,5 +63,4 @@ class Tree:
                 if and_result == self.all_nodes[index].net_number:
                     is_success = True
                     now_number = and_result
-        return now_number,is_success
-
+        return now_number, is_success
