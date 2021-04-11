@@ -1,10 +1,14 @@
-def prefix2netmask(netmask):
-    if netmask < 0:
+
+
+
+
+def prefixlength2netmask(length):
+    if length < 0:
         return 0
-    elif netmask >= 1<<32:
+    elif length >= 1 << 32:
         return 0
     else:
-        return 1<<32 - 1<<(32-netmask)
+        return 1 << 32 - 1 << (32 - length)
 
 
 def prefix2string(prefix):
@@ -15,14 +19,9 @@ def prefix2string(prefix):
     return str(n_1) + "." + str(n_2) + "." + str(n_3) + "." + str(n_4)
 
 
-
 def string2prefix(prefix):
     all_segment = prefix.split('.')
     sum_prefix = 0
     for segment in all_segment:
         sum_prefix = sum_prefix << 8 | int(segment)
     return sum_prefix
-
-
-
-
