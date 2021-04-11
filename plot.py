@@ -20,17 +20,19 @@ def plot(abscissa, set_up_times, match_times):
     ax.set_title("route set-up time")
     ax.set_xlabel("count in route-table(line)")
     ax.set_ylabel("time(s)")
+    ax.set_xscale('log')
     ax.plot(abscissa, generate_times, label="set-up-time")
     ax.legend()
-    ax.xscale('log')
+
 
     ax1 = fig.add_subplot(2, 1, 2)
     ax1.set_title("find route time")
     ax1.set_xlabel("count of finding scale(line)")
     ax1.set_ylabel("time(s)")
+    ax1.set_xscale('log')
     for i in abscissa:
-        ax1.plot(abscissa, find_times[i], label="count: " + str(abscissa) + " line")
-    ax1.xscale('log')
+        ax1.plot(abscissa, find_times[i], label="count: " + str(i) + " line")
+
     ax1.legend()
     plt.show()
     fig.savefig("match.png",dpi=800)
